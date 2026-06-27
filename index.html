@@ -14,28 +14,41 @@
             line-height: 1.6;
         }
         header {
-            background: linear-gradient(135deg, #2c5282 0%, #2b6cb0 100%);
-            color: white;
-            padding: 0;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: relative;
             overflow: hidden;
         }
         .header-image {
             width: 100%;
-            height: 200px;
+            height: 225px;
             object-fit: cover;
             object-position: center;
-            opacity: 0.9;
         }
-        .header-content {
-            position: relative;
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
             padding: 20px;
-            background: rgba(44, 82, 130, 0.9);
         }
-        header h1 { font-size: 2em; margin-bottom: 8px; }
-        header p { font-size: 1.1em; opacity: 0.95; margin-bottom: 10px; }
+        .header-overlay h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-weight: 700;
+        }
+        .header-overlay p {
+            font-size: 1.2em;
+            margin-bottom: 12px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
         .update-date {
             display: inline-block;
             background: rgba(255,255,255,0.2);
@@ -43,6 +56,8 @@
             border-radius: 20px;
             font-size: 0.9em;
             margin-top: 10px;
+            border: 1px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(4px);
         }
         nav {
             background: white;
@@ -55,6 +70,7 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 8px;
+            align-items: center;
         }
         nav a {
             color: #2c5282;
@@ -67,6 +83,59 @@
             white-space: nowrap;
         }
         nav a:hover { background: #ebf4ff; }
+
+        /* Кнопка "Жалоба/предложение" - акцентная */
+        .complaint-btn {
+            background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+            color: white !important;
+            padding: 8px 18px !important;
+            border-radius: 20px !important;
+            font-weight: 600 !important;
+            box-shadow: 0 3px 8px rgba(221, 107, 32, 0.3);
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            font-size: 0.95em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .complaint-btn:hover {
+            background: linear-gradient(135deg, #dd6b20 0%, #c05621 100%) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(221, 107, 32, 0.4);
+        }
+        .complaint-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Кнопка "Вступить в чат" - акцентная */
+        .chat-btn {
+            background: linear-gradient(135deg, #38b2ac 0%, #319795 100%);
+            color: white !important;
+            padding: 8px 18px !important;
+            border-radius: 20px !important;
+            font-weight: 600 !important;
+            box-shadow: 0 3px 8px rgba(49, 151, 149, 0.3);
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            font-size: 0.95em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .chat-btn:hover {
+            background: linear-gradient(135deg, #319795 0%, #2c7a7b 100%) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(49, 151, 149, 0.4);
+        }
+        .chat-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
         .container { max-width: 1100px; margin: 20px auto; padding: 0 15px; }
         section {
             background: white;
@@ -157,8 +226,8 @@
             color: #718096;
             font-size: 0.9em;
         }
-        
-        /* App Links Styling */
+
+        /* App Links Styling - улучшенная читаемость */
         .app-links {
             display: flex;
             gap: 12px;
@@ -168,32 +237,57 @@
         .app-link {
             display: inline-flex;
             align-items: center;
+            padding: 12px 22px;
+            background: linear-gradient(135deg, #2b6cb0 0%, #1a365d 100%);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 6px rgba(44, 82, 130, 0.25);
+            font-size: 0.95em;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.3px;
+        }
+        .app-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(44, 82, 130, 0.35);
+            background: linear-gradient(135deg, #2c5282 0%, #1a202c 100%);
+        }
+        .app-link svg {
+            width: 22px;
+            height: 22px;
+            margin-right: 10px;
+            fill: #ffffff;
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+        }
+
+        /* Phone Button Styling */
+        .phone-button {
+            display: inline-flex;
+            align-items: center;
             padding: 10px 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
             color: white;
             text-decoration: none;
             border-radius: 8px;
             font-weight: 600;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            font-size: 0.9em;
+            transition: all 0.2s;
+            box-shadow: 0 4px 6px rgba(44, 82, 130, 0.2);
+            font-size: 0.95em;
+            margin: 4px 0;
         }
-        .app-link:hover {
+        .phone-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 6px 12px rgba(44, 82, 130, 0.3);
+            background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%);
         }
-        .app-link.android {
-            background: linear-gradient(135deg, #3DDC84 0%, #28a745 100%);
-        }
-        .app-link.ios {
-            background: linear-gradient(135deg, #000000 0%, #333333 100%);
-        }
-        .app-link svg {
-            width: 20px;
-            height: 20px;
+        .phone-button svg {
+            width: 18px;
+            height: 18px;
             margin-right: 8px;
         }
-        
+
         /* Spoiler/Collapsible */
         details {
             background: #f7fafc;
@@ -229,7 +323,7 @@
         .spoiler-content {
             padding: 20px;
         }
-        
+
         /* Waste types */
         .waste-types {
             display: grid;
@@ -259,7 +353,7 @@
             margin-top: 8px;
             font-size: 0.95em;
         }
-        
+
         /* FAQ Styling */
         .faq-item {
             margin-bottom: 15px;
@@ -289,7 +383,7 @@
         .faq-answer li {
             margin-bottom: 8px;
         }
-        
+
         /* Cleaning schedule */
         .cleaning-schedule {
             margin: 20px 0;
@@ -312,7 +406,7 @@
         .cleaning-card li {
             margin-bottom: 5px;
         }
-        
+
         /* Services in development */
         .services-dev {
             position: relative;
@@ -421,30 +515,200 @@
         .dev-info li {
             margin-bottom: 4px;
         }
-        
+
+        /* ============================================ */
+        /* SIDEBAR (выезжающая панель с формой)         */
+        /* ============================================ */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 998;
+            backdrop-filter: blur(2px);
+        }
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .complaint-sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            max-width: 700px;
+            height: 100vh;
+            background: white;
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .complaint-sidebar.active {
+            transform: translateX(0);
+        }
+
+        .sidebar-header {
+            background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+            color: white;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        .sidebar-header h3 {
+            font-size: 1.3em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0;
+        }
+        .sidebar-header h3 svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .close-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            font-size: 1.2em;
+        }
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .sidebar-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0;
+            background: #f7fafc;
+        }
+        .sidebar-body iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 600px;
+            border: none;
+            display: block;
+        }
+
+        .sidebar-footer {
+            padding: 12px 25px;
+            background: #f7fafc;
+            border-top: 1px solid #e2e8f0;
+            font-size: 0.85em;
+            color: #718096;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        /* ============================================ */
+        /* КНОПКА "ВЕРНУТЬСЯ НАВЕРХ"                    */
+        /* ============================================ */
+        .scroll-top-btn {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4299e1 0%, #2c5282 100%);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(44, 82, 130, 0.35);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background 0.2s;
+            z-index: 99;
+        }
+        .scroll-top-btn.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .scroll-top-btn:hover {
+            background: linear-gradient(135deg, #3182ce 0%, #1a365d 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(44, 82, 130, 0.45);
+        }
+        .scroll-top-btn.visible:hover {
+            transform: translateY(-3px);
+        }
+        .scroll-top-btn svg {
+            width: 22px;
+            height: 22px;
+        }
+        .scroll-top-btn::after {
+            content: 'Наверх';
+            position: absolute;
+            right: 60px;
+            background: #2c5282;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+        }
+        .scroll-top-btn:hover::after {
+            opacity: 1;
+        }
+
+        /* Блокировка скролла body при открытой панели */
+        body.sidebar-open {
+            overflow: hidden;
+        }
+
         /* Mobile optimization */
         @media (max-width: 768px) {
             .header-image {
-                height: 150px;
+                height: 165px;
             }
-            header h1 { 
-                font-size: 1.5em; 
+            .header-overlay h1 {
+                font-size: 1.6em;
             }
-            header p {
-                font-size: 1em;
+            .header-overlay p {
+                font-size: 1.05em;
             }
-            section { 
+            section {
                 padding: 20px 15px;
                 margin-bottom: 15px;
             }
             section h2 {
                 font-size: 1.3em;
             }
-            nav { 
+            nav {
                 padding: 10px;
             }
-            nav a { 
-                font-size: 0.85em; 
+            nav a {
+                font-size: 0.85em;
                 padding: 6px 10px;
             }
             .cards {
@@ -454,8 +718,8 @@
             .app-links {
                 flex-direction: column;
             }
-            .app-link { 
-                width: 100%; 
+            .app-link {
+                width: 100%;
                 justify-content: center;
             }
             table {
@@ -487,14 +751,40 @@
             .service-icon {
                 font-size: 2em;
             }
+            .phone-button {
+                width: 100%;
+                justify-content: center;
+            }
+
+            /* Sidebar на мобильных */
+            .complaint-sidebar {
+                max-width: 100%;
+            }
+            .sidebar-header {
+                padding: 15px 20px;
+            }
+            .sidebar-header h3 {
+                font-size: 1.1em;
+            }
+
+            /* Кнопка наверх на мобильных */
+            .scroll-top-btn {
+                width: 44px;
+                height: 44px;
+                right: 15px;
+                bottom: 15px;
+            }
+            .scroll-top-btn::after {
+                display: none;
+            }
         }
-        
+
         @media (max-width: 480px) {
             .header-image {
-                height: 120px;
+                height: 135px;
             }
-            header h1 {
-                font-size: 1.3em;
+            .header-overlay h1 {
+                font-size: 1.4em;
             }
             .container {
                 padding: 0 10px;
@@ -510,14 +800,19 @@
             .services-grid {
                 grid-template-columns: 1fr 1fr;
             }
+            .complaint-btn,
+            .chat-btn {
+                font-size: 0.85em !important;
+                padding: 6px 12px !important;
+            }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="https://images.unsplash.com/photo-1448375240586-dfd8f3793371?w=1200&h=400&fit=crop" alt="Горкинско-Аметьевский лес" class="header-image">
-    <div class="header-content">
+    <img src="https://static.tildacdn.com/tild3831-6332-4139-a333-386239376361/-__4.jpg" alt="Жилой дом" class="header-image">
+    <div class="header-overlay">
         <h1>🏠 Жилой дом</h1>
         <p>проезд Яраткан, 5А</p>
         <div class="update-date">📅 Обновлено: 27 июня 2026 г.</div>
@@ -530,9 +825,71 @@
     <a href="#heating">🔥 Отопление</a>
     <a href="#trash">🗑️ Мусор</a>
     <a href="#cleaning">🧹 Уборка</a>
-    <a href="#services">⭐ Услуги</a>
     <a href="#faq">❓ Вопросы</a>
+    <a href="#services">⭐ Услуги</a>
+    <button class="chat-btn" id="chatBtn" aria-label="Вступить в чат дома">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+        </svg>
+        Вступить в чат
+    </button>
+    <button class="complaint-btn" id="complaintBtn" aria-label="Оставить жалобу или предложение">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-4h-2V6h2v4z"/>
+        </svg>
+        Жалоба / предложение
+    </button>
 </nav>
+
+<!-- Оверлей (затемнение фона) -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- Выезжающая панель справа - Жалоба/предложение -->
+<aside class="complaint-sidebar" id="complaintSidebar" aria-hidden="true">
+    <div class="sidebar-header">
+        <h3>
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-4h-2V6h2v4z"/>
+            </svg>
+            Жалоба / предложение
+        </h3>
+        <button class="close-btn" id="closeComplaintBtn" aria-label="Закрыть">✕</button>
+    </div>
+    <div class="sidebar-body">
+        <script src="https://forms.yandex.ru/_static/embed.js"></script>
+        <iframe src="https://forms.yandex.ru/u/6985a51502848f42e8385180?iframe=1" frameborder="0" name="ya-form-6985a51502848f42e8385180" width="650"></iframe>
+    </div>
+    <div class="sidebar-footer">
+        💬 Ваше обращение будет рассмотрено в кратчайшие сроки
+    </div>
+</aside>
+
+<!-- Выезжающая панель справа - Чат дома -->
+<aside class="complaint-sidebar" id="chatSidebar" aria-hidden="true">
+    <div class="sidebar-header" style="background: linear-gradient(135deg, #38b2ac 0%, #319795 100%);">
+        <h3>
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+            </svg>
+            Вступить в чат дома
+        </h3>
+        <button class="close-btn" id="closeChatBtn" aria-label="Закрыть">✕</button>
+    </div>
+    <div class="sidebar-body">
+        <script src="https://forms.yandex.ru/_static/embed.js"></script>
+        <iframe src="https://forms.yandex.ru/u/6a3ff806e010db0de1853893?iframe=1" frameborder="0" name="ya-form-6a3ff806e010db0de1853893" width="650"></iframe>
+    </div>
+    <div class="sidebar-footer">
+        💬 После заполнения формы вы получите доступ к чату дома
+    </div>
+</aside>
+
+<!-- Кнопка "Вернуться наверх" -->
+<button class="scroll-top-btn" id="scrollTopBtn" aria-label="Вернуться наверх">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+    </svg>
+</button>
 
 <div class="container">
 
@@ -550,19 +907,19 @@
                 <p><strong>Администрация:</strong></p>
                 <p class="phone"><a href="tel:+78435146292">📱 8 (843) 514-62-92</a></p>
                 <p><strong>Приёмные часы руководителя:</strong> ЧТ 17:30–19:00</p>
-                
+
                 <p style="margin-top: 15px;"><strong>📱 Мобильное приложение:</strong></p>
                 <div class="app-links">
-                    <a href="https://play.google.com/store/apps/details?id=com.martitrofan.centr" class="app-link android" target="_blank">
+                    <a href="https://play.google.com/store/apps/details?id=com.martitrofan.centr" class="app-link" target="_blank">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" /></svg>
                         Google Play
                     </a>
-                    <a href="https://apps.apple.com/us/app/%D1%83%D0%BA-%D1%86%D0%B5%D0%BD%D1%82%D1%80-%D0%BC%D0%BA/id6443571375" class="app-link ios" target="_blank">
+                    <a href="https://apps.apple.com/us/app/%D1%83%D0%BA-%D1%86%D0%B5%D0%BD%D1%82%D1%80-%D0%BC%D0%BA/id6443571375" class="app-link" target="_blank">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.46 12.36,4.26 13,3.5Z" /></svg>
                         App Store
                     </a>
                 </div>
-                
+
                 <div style="margin-top:15px; position:relative; overflow:hidden; border-radius:8px;">
                     <iframe src="https://yandex.ru/map-widget/v1/?ll=49.197977%2C55.760164&mode=whatshere&whatshere%5Bpoint%5D=49.197942%2C55.760148&whatshere%5Bzoom%5D=17&z=18.04" width="100%" height="250" frameborder="0" allowfullscreen="true" style="position:relative;"></iframe>
                 </div>
@@ -598,38 +955,38 @@
 
         <table>
             <thead>
-                <tr>
-                    <th>Учреждение</th>
-                    <th>Адрес</th>
-                    <th>График работы</th>
-                    <th>Телефон</th>
-                </tr>
+            <tr>
+                <th>Учреждение</th>
+                <th>Адрес</th>
+                <th>График работы</th>
+                <th>Телефон</th>
+            </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><strong>Детская поликлиника №6</strong></td>
-                    <td>Отрадная ул., 38А</td>
-                    <td>Пн–Пт 7:30–19:00<br>Сб 9:00–17:00<br>Вс 9:00-15:00</td>
-                    <td>
-                        <a href="tel:+78432981771">+7 (843) 298-17-71</a><br>
-                        <a href="tel:+78432984854">+7 (843) 298-48-54</a><br>
-                        <a href="tel:+78435983023">+7 (843) 598-30-23</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td><strong>Взрослая поликлиника<br>Больница №18</strong></td>
-                    <td>ул. Мавлютова, 2</td>
-                    <td>Пн–Пт 8:00–20:00<br>Сб 9:00–17:00<br>Вс 9:00-15:00</td>
-                    <td>
-                        <a href="tel:+78432912345">+7 (843) 291-23-45</a><br>
-                        <a href="tel:+78432912346">+7 (843) 291-23-46</a>
-                    </td>
-                </tr>
+            <tr>
+                <td><strong>Детская поликлиника №6</strong></td>
+                <td>Отрадная ул., 38А</td>
+                <td>Пн–Пт 7:30–19:00<br>Сб 9:00–17:00<br>Вс 9:00-15:00</td>
+                <td>
+                    <a href="tel:+78432981771">+7 (843) 298-17-71</a><br>
+                    <a href="tel:+78432984854">+7 (843) 298-48-54</a><br>
+                    <a href="tel:+78435983023">+7 (843) 598-30-23</a>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Взрослая поликлиника<br>Больница №18</strong></td>
+                <td>ул. Мавлютова, 2</td>
+                <td>Пн–Пт 8:00–20:00<br>Сб 9:00–17:00<br>Вс 9:00-15:00</td>
+                <td>
+                    <a href="tel:+78432912345">+7 (843) 291-23-45</a><br>
+                    <a href="tel:+78432912346">+7 (843) 291-23-46</a>
+                </td>
+            </tr>
             </tbody>
         </table>
-        
+
         <div class="info-box">
-            💡 <strong>Запись к врачу:</strong> через портал <a href="https://www.gosuslugi.ru" target="_blank">Госуслуги</a> 
+            💡 <strong>Запись к врачу:</strong> через портал <a href="https://www.gosuslugi.ru" target="_blank">Госуслуги</a>
             или <a href="https://uslugi.tatarstan.ru" target="_blank">uslugi.tatarstan.ru</a>
         </div>
     </section>
@@ -637,13 +994,13 @@
     <!-- БЛОК 3: ОТОПЛЕНИЕ (свернуто по умолчанию) -->
     <section id="heating">
         <h2>🔥 Инструкция по настройке отопления</h2>
-        
+
         <details>
             <summary>📋 Нажмите, чтобы открыть инструкцию</summary>
             <div class="spoiler-content">
                 <p style="margin-bottom:20px;">
-                    Если в квартире холодно, батареи нагреваются неравномерно или слышны посторонние звуки 
-                    (бульканье, стук) — скорее всего, в радиаторе скопился воздух. Его нужно стравить через 
+                    Если в квартире холодно, батареи нагреваются неравномерно или слышны посторонние звуки
+                    (бульканье, стук) — скорее всего, в радиаторе скопился воздух. Его нужно стравить через
                     кран Маевского.
                 </p>
 
@@ -657,32 +1014,32 @@
                 <h3 style="color:#2c5282; margin-bottom:15px;">📋 Пошаговая инструкция:</h3>
                 <div class="steps">
                     <div class="step">
-                        <strong>Определите проблему.</strong> Если батарея горячая сверху, но холодная снизу — 
-                        это воздушная пробка. Если холодная целиком — возможно, закрыт кран на стояке 
+                        <strong>Определите проблему.</strong> Если батарея горячая сверху, но холодная снизу —
+                        это воздушная пробка. Если холодная целиком — возможно, закрыт кран на стояке
                         (обратитесь в УК).
                     </div>
                     <div class="step">
-                        <strong>Найдите кран Маевского.</strong> Это маленький вентиль в верхней части радиатора, 
+                        <strong>Найдите кран Маевского.</strong> Это маленький вентиль в верхней части радиатора,
                         обычно с противоположной стороны от подводки труб.
                     </div>
                     <div class="step">
-                        <strong>Подготовьте ёмкость.</strong> Поставьте стакан под кран, приложите тряпку — 
+                        <strong>Подготовьте ёмкость.</strong> Поставьте стакан под кран, приложите тряпку —
                         польётся вода.
                     </div>
                     <div class="step">
-                        <strong>Медленно открутите кран.</strong> Достаточно пол-оборота — полтора. 
+                        <strong>Медленно открутите кран.</strong> Достаточно пол-оборота — полтора.
                         Вы услышите шипение — это выходит воздух.
                     </div>
                     <div class="step">
-                        <strong>Дождитесь ровной струи воды.</strong> Когда шипение прекратится и польётся 
+                        <strong>Дождитесь ровной струи воды.</strong> Когда шипение прекратится и польётся
                         вода без пузырьков — воздух вышел.
                     </div>
                     <div class="step">
-                        <strong>Закройте кран.</strong> Плотно, но без чрезмерного усилия закрутите вентиль 
+                        <strong>Закройте кран.</strong> Плотно, но без чрезмерного усилия закрутите вентиль
                         обратно.
                     </div>
                     <div class="step">
-                        <strong>Проверьте давление.</strong> Если у вас индивидуальное отопление (котёл) — 
+                        <strong>Проверьте давление.</strong> Если у вас индивидуальное отопление (котёл) —
                         проверьте манометр, норма 1.2–1.5 бар. При необходимости подпитайте систему.
                     </div>
                 </div>
@@ -698,7 +1055,7 @@
                 </div>
 
                 <div class="info-box">
-                    📞 Если после стравливания воздуха батареи всё равно холодные — звоните в диспетчерскую УК. 
+                    📞 Если после стравливания воздуха батареи всё равно холодные — звоните в диспетчерскую УК.
                     Возможно, проблема на уровне дома или требуется промывка системы.
                 </div>
             </div>
@@ -723,7 +1080,7 @@
                 </ul>
                 <p style="margin-top: 10px;"><strong>Куда:</strong> обычные контейнеры у подъездов</p>
             </div>
-            
+
             <div class="waste-type technical">
                 <h4>🔧 Технический мусор</h4>
                 <ul>
@@ -742,7 +1099,7 @@
         <ul style="margin-left:20px;">
             <li>Пластик, стекло, бумагу — ополаскивать от остатков еды перед выбросом.</li>
             <li>Крышки с бутылок — снимать и выбрасывать отдельно (или в общий пластик).</li>
-            <li>Батарейки, лампы, градусники — <strong>НЕ выбрасывать в общий мусор!</strong> 
+            <li>Батарейки, лампы, градусники — <strong>НЕ выбрасывать в общий мусор!</strong>
                 Сдавать в специальные боксы.</li>
             <li>Строительный мусор от ремонта — вывозится <strong>отдельно</strong> за счёт собственника в бункер для технических отходов.</li>
         </ul>
@@ -765,7 +1122,7 @@
         <div class="info-box">
             📋 Технологическая карта и график уборки подъездов в доме №5А по проезду Яраткан
         </div>
-        
+
         <div class="cleaning-schedule">
             <div class="cleaning-card">
                 <h4>🔄 Ежедневная уборка (Пн-Пт)</h4>
@@ -781,7 +1138,7 @@
                     <li>Протирка подоконников на 1 этаже</li>
                 </ul>
             </div>
-            
+
             <div class="cleaning-card">
                 <h4>📅 Уборка 1 раз в неделю (по графику)</h4>
                 <ul>
@@ -807,20 +1164,142 @@
                 <p style="margin-top: 10px;"><em>В день полной уборки проводится тщательная уборка всех этажей, мест общего пользования и технических помещений подъезда.</em></p>
             </div>
         </div>
-        
+
         <div class="info-box">
             💡 <strong>Важно:</strong> Если уборка не проводится согласно графику, создайте заявку в приложении или позвоните диспетчеру: <a href="tel:+79662500274">8 (966) 250-02-74</a>
         </div>
     </section>
 
-    <!-- БЛОК 6: РЕКОМЕНДАЦИИ УСЛУГ (В РАЗРАБОТКЕ) -->
+    <!-- БЛОК 6: ЧАСТЫЕ ВОПРОСЫ -->
+    <section id="faq">
+        <h2>❓ Частые вопросы</h2>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>🔥 Почему у меня большие расходы за отопление?</span>
+            </div>
+            <div class="faq-answer">
+                <p>Высокие расходы за отопление могут быть вызваны несколькими причинами:</p>
+                <ul>
+                    <li><strong>Батареи включены на максимум.</strong> Если у вас установлены терморегуляторы, и они открыты полностью, теплоноситель поступает в максимальном объёме, что увеличивает расход.</li>
+                    <li><strong>Если батареи перекрыты полностью (без расхода), берётся норматив.</strong> Согласно законодательству, даже при полностью закрытых батареях начисляется плата по нормативу, так как тепло передаётся через стены от соседних помещений.</li>
+                    <li><strong>Аномально большие расходы.</strong> Если вы заметили несоразмерно высокие начисления, которые не соответствуют вашему потреблению, <strong>необходимо сообщить в УК</strong> для проверки приборов учёта и системы отопления.</li>
+                    <li><strong>Расхождения по платёжке.</strong> Если есть какие-то расхождения или вопросы по платёжным документам, обратитесь в УК ЦЕНТР-МК:
+                        <div style="margin-top: 12px;">
+                            <a href="tel:+79662500274" class="phone-button">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                                8 (843) 250-02-74
+                            </a>
+                            <a href="tel:+78435146292" class="phone-button">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                                8 (843) 514-62-92
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>🔊 Что делать, если соседи шумят?</span>
+            </div>
+            <div class="faq-answer">
+                <p>Если ваши соседи нарушают тишину (особенно во время ремонтных работ):</p>
+                <ul>
+                    <li><strong>Учтите факт, что ремонт делают работники.</strong> Их нет в чате дома, поэтому напрямую договориться сложно.</li>
+                    <li><strong>Напишите в чат дома</strong> с просьбой прекратить работы в <strong>ЗАПРЕЩЁННОЕ ВРЕМЯ</strong>.</li>
+                    <li><strong>Найдите виновников и договоритесь</strong> о часах тишины или начале работ. Попробуйте решить вопрос мирным путём — предложите конкретные временные рамки, когда шум допустим.</li>
+                    <li><strong>Если договориться не удаётся,</strong> обратитесь к участковому или вызовите полицию при систематических нарушениях.</li>
+                </ul>
+                <div class="info-box" style="margin-top: 15px;">
+                    ⏰ <strong>Закон о тишине:</strong>
+                    <ul style="margin-left: 20px; margin-top: 8px;">
+                        <li><strong>Будние дни (Пн-Пт):</strong> тишина с <strong>22:00 до 06:00</strong></li>
+                        <li><strong>Выходные и праздничные дни:</strong> тишина с <strong>22:00 до 09:00</strong></li>
+                        <li><strong>Тихий час для детей:</strong> ежедневно с <strong>13:00 до 15:00</strong></li>
+                    </ul>
+                    <p style="margin-top: 8px; font-size: 0.9em;">
+                        В это время запрещены шумные работы (ремонт, сверление, музыка и т.д.), которые нарушают покой граждан.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>🔧 Что делать, если что-то не работает в подъезде или есть жалобы?</span>
+            </div>
+            <div class="faq-answer">
+                <p>Если в подъезде что-то сломалось, не работает или у вас есть жалобы на состояние общего имущества:</p>
+                <ul>
+                    <li><strong>Не пишите в общий чат.</strong> Сообщения в чате могут потеряться, и проблема не будет решена оперативно.</li>
+                    <li><strong>Создайте заявку через приложение «Центр МК»</strong> или позвоните диспетчеру:
+                        <div style="margin-top: 10px;">
+                            <a href="tel:+79662500274" class="phone-button">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                                8 (966) 250-02-74
+                            </a>
+                        </div>
+                    </li>
+                    <li><strong>При наличии глобальных проблем</strong> (серьёзные неисправности, систематические нарушения) напишите старшему по дому для принятия коллективных мер.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>🏠 Что делать, если обнаружились проблемы по квартире?</span>
+            </div>
+            <div class="faq-answer">
+                <p>Если в вашей квартире обнаружились недостатки (протечки, трещины, неисправности инженерных систем и т.д.):</p>
+                <ul>
+                    <li><strong>Звоните в гарантийный отдел ООО «Грани»:</strong>
+                        <div style="margin-top: 10px;">
+                            <a href="tel:+79534985100" class="phone-button">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                                +7 (953) 498-51-00
+                            </a>
+                        </div>
+                    </li>
+                    <li>Опишите проблему и оставьте заявку на устранение недостатков</li>
+                    <li>Если квартира на гарантии, работы будут выполнены бесплатно</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>🧹 Что делать, если в моём подъезде нет уборки по графику?</span>
+            </div>
+            <div class="faq-answer">
+                <p>Если вы заметили, что уборка в подъезде не проводится согласно утверждённому графику:</p>
+                <ul>
+                    <li><strong>Создайте заявку в приложении «Центр МК»</strong> с указанием конкретного нарушения</li>
+                    <li><strong>Или позвоните диспетчеру:</strong>
+                        <div style="margin-top: 10px;">
+                            <a href="tel:+79662500274" class="phone-button">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                                8 (966) 250-02-74
+                            </a>
+                        </div>
+                    </li>
+                    <li>Укажите номер подъезда и какие именно работы не были выполнены</li>
+                    <li>УК обязана устранить нарушение в кратчайшие сроки</li>
+                </ul>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- БЛОК 7: РЕКОМЕНДАЦИИ УСЛУГ -->
     <section id="services">
         <h2>⭐ Рекомендации услуг</h2>
-        
+
         <div class="services-dev">
             <h3>Скоро здесь появится каталог проверенных мастеров</h3>
             <p>
-                Мы собираем базу надёжных специалистов, которых рекомендуют соседи. 
+                Мы собираем базу надёжных специалистов, которых рекомендуют соседи.
                 Все мастера будут проверены — с отзывами, рейтингом и контактными данными.
             </p>
 
@@ -885,109 +1364,88 @@
                     <li>Возможность оставить свою заявку и получить отклики</li>
                 </ul>
             </div>
-            
+
             <p style="margin-top: 25px; color: #718096; font-size: 0.9em;">
-                💬 Есть предложения или проверенный мастер? Напишите старшему по дому — 
+                💬 Есть предложения или проверенный мастер? Напишите старшему по дому —
                 добавим в список первыми!
             </p>
         </div>
     </section>
 
-    <!-- БЛОК 7: ЧАСТЫЕ ВОПРОСЫ -->
-    <section id="faq">
-        <h2>❓ Частые вопросы</h2>
-
-        <div class="faq-item">
-            <div class="faq-question">
-                <span>🔥 Почему у меня большие расходы за отопление?</span>
-            </div>
-            <div class="faq-answer">
-                <p>Высокие расходы за отопление могут быть вызваны несколькими причинами:</p>
-                <ul>
-                    <li><strong>Батареи включены на максимум.</strong> Если у вас установлены терморегуляторы, и они открыты полностью, теплоноситель поступает в максимальном объёме, что увеличивает расход.</li>
-                    <li><strong>Если батареи перекрыты полностью (без расхода), берётся норматив.</strong> Согласно законодательству, даже при полностью закрытых батареях начисляется плата по нормативу, так как тепло передаётся через стены от соседних помещений.</li>
-                    <li><strong>Аномально большие расходы.</strong> Если вы заметили несоразмерно высокие начисления, которые не соответствуют вашему потреблению, <strong>необходимо сообщить в УК</strong> для проверки приборов учёта и системы отопления.</li>
-                    <li><strong>Расхождения по платёжке.</strong> Если есть какие-то расхождения или вопросы по платёжным документам, обратитесь в УК ЦЕНТР-МК:
-                        <div class="app-links" style="margin-top: 10px;">
-                            <a href="tel:+79662500274" class="app-link">📞 8 (843) 250-02-74</a>
-                            <a href="tel:+78435146292" class="app-link">📞 8 (843) 514-62-92</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">
-                <span>🔧 Что делать, если что-то не работает в подъезде или есть жалобы?</span>
-            </div>
-            <div class="faq-answer">
-                <p>Если в подъезде что-то сломалось, не работает или у вас есть жалобы на состояние общего имущества:</p>
-                <ul>
-                    <li><strong>Не пишите в общий чат.</strong> Сообщения в чате могут потеряться, и проблема не будет решена оперативно.</li>
-                    <li><strong>Создайте заявку через приложение «Центр МК»</strong> или позвоните диспетчеру по телефону <a href="tel:+79662500274">8 (966) 250-02-74</a>. Это гарантирует регистрацию обращения и контроль исполнения.</li>
-                    <li><strong>При наличии глобальных проблем</strong> (серьёзные неисправности, систематические нарушения) напишите старшему по дому для принятия коллективных мер.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">
-                <span>🏠 Что делать, если обнаружились проблемы по квартире?</span>
-            </div>
-            <div class="faq-answer">
-                <p>Если в вашей квартире обнаружились недостатки (протечки, трещины, неисправности инженерных систем и т.д.):</p>
-                <ul>
-                    <li><strong>Звоните в гарантийный отдел ООО «Грани»</strong> по телефону: <a href="tel:+79534985100" class="phone">+7 (953) 498-51-00</a></li>
-                    <li>Опишите проблему и оставьте заявку на устранение недостатков</li>
-                    <li>Если квартира на гарантии, работы будут выполнены бесплатно</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">
-                <span>🧹 Что делать, если в моём подъезде нет уборки по графику?</span>
-            </div>
-            <div class="faq-answer">
-                <p>Если вы заметили, что уборка в подъезде не проводится согласно утверждённому графику:</p>
-                <ul>
-                    <li><strong>Создайте заявку в приложении «Центр МК»</strong> с указанием конкретного нарушения</li>
-                    <li><strong>Или позвоните диспетчеру</strong> по телефону <a href="tel:+79662500274">8 (966) 250-02-74</a> и оставьте заявку</li>
-                    <li>Укажите номер подъезда и какие именно работы не были выполнены</li>
-                    <li>УК обязана устранить нарушение в кратчайшие сроки</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">
-                <span>🔊 Что делать, если соседи шумят?</span>
-            </div>
-            <div class="faq-answer">
-                <p>Если ваши соседи нарушают тишину (особенно во время ремонтных работ):</p>
-                <ul>
-                    <li><strong>Учтите факт, что ремонт делают работники.</strong> Их нет в чате дома, поэтому напрямую договориться сложно.</li>
-                    <li><strong>Напишите в чат дома</strong> с просьбой прекратить работы в <strong>ЗАПРЕЩЁННОЕ ВРЕМЯ</strong> (обычно это ночное время, выходные и праздничные дни — уточните местные нормы).</li>
-                    <li><strong>Найдите виновников и договоритесь</strong> о часах тишины или начале работ. Попробуйте решить вопрос мирным путём — предложите конкретные временные рамки, когда шум допустим.</li>
-                    <li><strong>Если договориться не удаётся,</strong> обратитесь к участковому или вызовите полицию при систематических нарушениях.</li>
-                </ul>
-                <div class="info-box" style="margin-top: 15px;">
-                    ⏰ <strong>Помните:</strong> по закону о тишине в Татарстане шуметь нельзя с 22:00 до 6:00, а также в выходные и праздничные дни днём (с 12:00 до 14:00).
-                </div>
-            </div>
-        </div>
-
-    </div>
-
 </div>
 
 <footer>
     <p>© 2026 Совет дома по адресу: проезд Яраткан, 5А</p>
-    <p style="margin-top:8px;">Сайт создан силами собственников. По вопросам дополнения информации — 
+    <p style="margin-top:8px;">Сайт создан силами собственников. По вопросам дополнения информации —
         обращайтесь в УК ЦЕНТР-МК или старшему по дому
     </p>
 </footer>
+
+<script>
+    // Логика открытия/закрытия панелей
+    const complaintBtn = document.getElementById('complaintBtn');
+    const chatBtn = document.getElementById('chatBtn');
+    const closeComplaintBtn = document.getElementById('closeComplaintBtn');
+    const closeChatBtn = document.getElementById('closeChatBtn');
+    const complaintSidebar = document.getElementById('complaintSidebar');
+    const chatSidebar = document.getElementById('chatSidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    const body = document.body;
+
+    function openSidebar(sidebar) {
+        sidebar.classList.add('active');
+        overlay.classList.add('active');
+        body.classList.add('sidebar-open');
+        sidebar.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeAllSidebars() {
+        complaintSidebar.classList.remove('active');
+        chatSidebar.classList.remove('active');
+        overlay.classList.remove('active');
+        body.classList.remove('sidebar-open');
+        complaintSidebar.setAttribute('aria-hidden', 'true');
+        chatSidebar.setAttribute('aria-hidden', 'true');
+    }
+
+    complaintBtn.addEventListener('click', () => {
+        closeAllSidebars();
+        openSidebar(complaintSidebar);
+    });
+
+    chatBtn.addEventListener('click', () => {
+        closeAllSidebars();
+        openSidebar(chatSidebar);
+    });
+
+    closeComplaintBtn.addEventListener('click', closeAllSidebars);
+    closeChatBtn.addEventListener('click', closeAllSidebars);
+    overlay.addEventListener('click', closeAllSidebars);
+
+    // Закрытие по клавише Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && (complaintSidebar.classList.contains('active') || chatSidebar.classList.contains('active'))) {
+            closeAllSidebars();
+        }
+    });
+
+    // ============================================
+    // Кнопка "Вернуться наверх"
+    // ============================================
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            scrollTopBtn.classList.add('visible');
+        } else {
+            scrollTopBtn.classList.remove('visible');
+        }
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
 
 </body>
 </html>
