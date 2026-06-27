@@ -3,20 +3,469 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой сайт на GitHub</title>
+    <title>Жилой дом — проезд Яраткан, 5А</title>
     <style>
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            text-align: center; 
-            margin-top: 100px; 
-            background-color: #f6f8fa;
-            color: #24292f;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #f4f6f8;
+            color: #2c3e50;
+            line-height: 1.6;
         }
-        h1 { color: #0969da; }
+        header {
+            background: linear-gradient(135deg, #2c5282 0%, #2b6cb0 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        header h1 { font-size: 2em; margin-bottom: 10px; }
+        header p { font-size: 1.1em; opacity: 0.95; }
+        nav {
+            background: white;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        nav a {
+            color: #2c5282;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        nav a:hover { background: #ebf4ff; }
+        .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
+        section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        section h2 {
+            color: #2c5282;
+            border-bottom: 3px solid #e2e8f0;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.6em;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: #f7fafc;
+            border-left: 4px solid #2b6cb0;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .card h3 { color: #2c5282; margin-bottom: 10px; font-size: 1.1em; }
+        .card p { margin: 5px 0; font-size: 0.95em; }
+        .card a { color: #2b6cb0; text-decoration: none; font-weight: 600; }
+        .card a:hover { text-decoration: underline; }
+        .phone { font-size: 1.1em; font-weight: 600; color: #2c5282; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: white;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        th { background: #ebf4ff; color: #2c5282; font-weight: 600; }
+        tr:hover { background: #f7fafc; }
+        .steps { counter-reset: step; }
+        .step {
+            background: #f7fafc;
+            padding: 15px 20px 15px 60px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            position: relative;
+            counter-increment: step;
+        }
+        .step::before {
+            content: counter(step);
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #2b6cb0;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .warning {
+            background: #fffaf0;
+            border-left: 4px solid #dd6b20;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        .info-box {
+            background: #ebf8ff;
+            border-left: 4px solid #3182ce;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #718096;
+            font-size: 0.9em;
+        }
+        .update-date {
+            display: inline-block;
+            background: #e2e8f0;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            margin-top: 10px;
+        }
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.5em; }
+            section { padding: 20px; }
+            nav a { font-size: 0.9em; padding: 6px 12px; }
+        }
     </style>
 </head>
 <body>
-    <h1>Привет, мир! 🚀</h1>
-    <p>Это мой первый сайт, размещенный на GitHub Pages.</p>
+
+<header>
+    <h1>🏠 Жилой дом</h1>
+    <p>проезд Яраткан, 5А</p>
+    <div class="update-date">Информация обновлена: 27 июня 2026 г.</div>
+</header>
+
+<nav>
+    <a href="#contacts">📞 Контакты</a>
+    <a href="#social">🏥 Социнфраструктура</a>
+    <a href="#heating">🔥 Отопление</a>
+    <a href="#trash">🗑️ Вывоз мусора</a>
+</nav>
+
+<div class="container">
+
+    <!-- БЛОК 1: КОНТАКТЫ -->
+    <section id="contacts">
+        <h2>📞 Контакты экстренных и бытовых служб</h2>
+        <div class="cards">
+
+            <div class="card">
+                <h3>🏢 Управляющая компания</h3>
+                <p><strong>Название:</strong> <!-- ВСТАВИТЬ: например, ООО "УК Жилсервис" --></p>
+                <p><strong>Адрес офиса:</strong> <!-- ВСТАВИТЬ --></p>
+                <p><strong>Диспетчерская (круглосуточно):</strong></p>
+                <p class="phone"><a href="tel:+7000">📱 ВСТАВИТЬ ТЕЛЕФОН</a></p>
+                <p><strong>Приёмные часы:</strong> Пн–Пт 9:00–18:00</p>
+            </div>
+
+            <div class="card">
+                <h3>🚧 Открытие шлагбаума / гостевой въезд</h3>
+                <p><strong>Диспетчер (24/7):</strong></p>
+                <p class="phone"><a href="tel:+7000">📱 ВСТАВИТЬ ТЕЛЕФОН</a></p>
+                <p><strong>Пульт охраны:</strong></p>
+                <p class="phone"><a href="tel:+7000">📱 ВСТАВИТЬ ТЕЛЕФОН</a></p>
+                <p style="margin-top:8px; font-size:0.9em; color:#718096;">
+                    ⚠️ Для гостевого въезда сообщите номер и марку авто, время прибытия.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>👮 Участковый уполномоченный</h3>
+                <p><strong>ФИО:</strong> <!-- ВСТАВИТЬ: звание, ФИО --></p>
+                <p><strong>Телефон:</strong></p>
+                <p class="phone"><a href="tel:+7000">📱 ВСТАВИТЬ ТЕЛЕФОН</a></p>
+                <p><strong>Отдел полиции:</strong> <!-- ВСТАВИТЬ: ОМВД района --></p>
+                <p><strong>Приёмные часы:</strong> <!-- ВСТАВИТЬ --></p>
+            </div>
+
+            <div class="card">
+                <h3>🚨 Экстренные службы</h3>
+                <p><strong>Единый номер:</strong> <span class="phone">112</span></p>
+                <p><strong>Полиция:</strong> <span class="phone">102</span></p>
+                <p><strong>Скорая помощь:</strong> <span class="phone">103</span></p>
+                <p><strong>Пожарная / МЧС:</strong> <span class="phone">101</span></p>
+                <p><strong>Аварийная газовая:</strong> <span class="phone">104</span></p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- БЛОК 2: СОЦИНФРАСТРУКТУРА -->
+    <section id="social">
+        <h2>🏥 Государственные учреждения рядом</h2>
+
+        <h3 style="color:#2c5282; margin:15px 0 10px;">Поликлиники</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Учреждение</th>
+                    <th>Адрес</th>
+                    <th>График работы</th>
+                    <th>Телефон</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><!-- ВСТАВИТЬ: Детская поликлиника №... --></td>
+                    <td><!-- ВСТАВИТЬ --></td>
+                    <td>Пн–Пт 8:00–20:00<br>Сб 9:00–15:00</td>
+                    <td><a href="tel:+7000">ВСТАВИТЬ</a></td>
+                </tr>
+                <tr>
+                    <td><!-- ВСТАВИТЬ: Взрослая поликлиника №... --></td>
+                    <td><!-- ВСТАВИТЬ --></td>
+                    <td>Пн–Пт 8:00–20:00<br>Сб 9:00–14:00</td>
+                    <td><a href="tel:+7000">ВСТАВИТЬ</a></td>
+                </tr>
+                <tr>
+                    <td><!-- ВСТАВИТЬ: Стоматология --></td>
+                    <td><!-- ВСТАВИТЬ --></td>
+                    <td>Пн–Пт 8:00–20:00</td>
+                    <td><a href="tel:+7000">ВСТАВИТЬ</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 style="color:#2c5282; margin:25px 0 10px;">Школы</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Учреждение</th>
+                    <th>Адрес</th>
+                    <th>График работы</th>
+                    <th>Телефон</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><!-- ВСТАВИТЬ: МБОУ "СОШ №..." --></td>
+                    <td><!-- ВСТАВИТЬ --></td>
+                    <td>Пн–Пт 8:00–18:00</td>
+                    <td><a href="tel:+7000">ВСТАВИТЬ</a></td>
+                </tr>
+                <tr>
+                    <td><!-- ВСТАВИТЬ: Ближайшая школа --></td>
+                    <td><!-- ВСТАВИТЬ --></td>
+                    <td>Пн–Пт 8:00–18:00</td>
+                    <td><a href="tel:+7000">ВСТАВИТЬ</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 style="color:#2c5282; margin:25px 0 10px;">Детские сады</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Учреждение</th>
+                    <th>Адрес</th>
+                    <th>График работы</th>
+                    <th>Телефон</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><!-- ВСТАВИТЬ: МБДОУ "Детский сад №..." --></td>
+                    <td><!-- ВСТАВИТЬ --></td>
+                    <td>Пн–Пт 7:00–19:00</td>
+                    <td><a href="tel:+7000">ВСТАВИТЬ</a></td>
+                </tr>
+                <tr>
+                    <td><!-- ВСТАВИТЬ: Ближайший детсад --></td>
+                    <td><!-- ВСТАВИТЬ --></td>
+                    <td>Пн–Пт 7:00–19:00</td>
+                    <td><a href="tel:+7000">ВСТАВИТЬ</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="info-box">
+            💡 <strong>Совет:</strong> Записаться к врачу, в школу или детсад можно через портал 
+            <a href="https://www.gosuslugi.ru" target="_blank">Госуслуги</a> 
+            или региональный портал (для Татарстана — <a href="https://uslugi.tatarstan.ru" target="_blank">uslugi.tatarstan.ru</a>).
+        </div>
+    </section>
+
+    <!-- БЛОК 3: ОТОПЛЕНИЕ -->
+    <section id="heating">
+        <h2>🔥 Инструкция по настройке отопления</h2>
+        <p style="margin-bottom:20px;">
+            Если в квартире холодно, батареи нагреваются неравномерно или слышны посторонние звуки 
+            (бульканье, стук) — скорее всего, в радиаторе скопился воздух. Его нужно стравить через 
+            кран Маевского.
+        </p>
+
+        <h3 style="color:#2c5282; margin-bottom:15px;">🛠️ Что понадобится:</h3>
+        <ul style="margin-left:20px; margin-bottom:20px;">
+            <li>Специальный ключ для крана Маевского (или плоская отвёртка)</li>
+            <li>Небольшая ёмкость (стакан, миска)</li>
+            <li>Тряпка / ветошь</li>
+        </ul>
+
+        <h3 style="color:#2c5282; margin-bottom:15px;">📋 Пошаговая инструкция:</h3>
+        <div class="steps">
+            <div class="step">
+                <strong>Определите проблему.</strong> Если батарея горячая сверху, но холодная снизу — 
+                это воздушная пробка. Если холодная целиком — возможно, закрыт кран на стояке 
+                (обратитесь в УК).
+            </div>
+            <div class="step">
+                <strong>Найдите кран Маевского.</strong> Это маленький вентиль в верхней части радиатора, 
+                обычно с противоположной стороны от подводки труб.
+            </div>
+            <div class="step">
+                <strong>Подготовьте ёмкость.</strong> Поставьте стакан под кран, приложите тряпку — 
+                польётся вода.
+            </div>
+            <div class="step">
+                <strong>Медленно открутите кран.</strong> Достаточно пол-оборота — полтора. 
+                Вы услышите шипение — это выходит воздух.
+            </div>
+            <div class="step">
+                <strong>Дождитесь ровной струи воды.</strong> Когда шипение прекратится и польётся 
+                вода без пузырьков — воздух вышел.
+            </div>
+            <div class="step">
+                <strong>Закройте кран.</strong> Плотно, но без чрезмерного усилия закрутите вентиль 
+                обратно.
+            </div>
+            <div class="step">
+                <strong>Проверьте давление.</strong> Если у вас индивидуальное отопление (котёл) — 
+                проверьте манометр, норма 1.2–1.5 бар. При необходимости подпитайте систему.
+            </div>
+        </div>
+
+        <div class="warning">
+            ⚠️ <strong>Важно!</strong>
+            <ul style="margin-left:20px; margin-top:8px;">
+                <li>Не откручивайте кран полностью — его невозможно будет закрыть обратно!</li>
+                <li>Вода в системе может быть горячей — берегите руки.</li>
+                <li>Если кран не поддаётся или сломан — <strong>немедленно звоните в УК</strong>, не пытайтесь чинить сами.</li>
+                <li>На центральном отоплении не трогайте запорные краны на стояках — это общедомовое имущество.</li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            📞 Если после стравливания воздуха батареи всё равно холодные — звоните в диспетчерскую УК. 
+            Возможно, проблема на уровне дома или требуется промывка системы.
+        </div>
+    </section>
+
+    <!-- БЛОК 4: ВЫВОЗ МУСОРА -->
+    <section id="trash">
+        <h2>🗑️ Вывоз мусора</h2>
+        <div class="info-box">
+            📌 Решения приняты на общем собрании собственников <strong>в 2026 году</strong>.
+        </div>
+
+        <h3 style="color:#2c5282; margin:20px 0 10px;">Региональный оператор</h3>
+        <div class="card" style="margin-bottom:20px;">
+            <p><strong>Название:</strong> <!-- ВСТАВИТЬ: например, ООО "ЭкоСити" / "ПЗГО" --></p>
+            <p><strong>Горячая линия:</strong></p>
+            <p class="phone"><a href="tel:+7000">📱 ВСТАВИТЬ ТЕЛЕФОН</a></p>
+            <p><strong>Сайт:</strong> <a href="#" target="_blank">ВСТАВИТЬ ССЫЛКУ</a></p>
+        </div>
+
+        <h3 style="color:#2c5282; margin:20px 0 10px;">📅 График вывоза</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Тип отходов</th>
+                    <th>Дни вывоза</th>
+                    <th>Время</th>
+                    <th>Контейнеры</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Смешанные отходы (ТКО)</td>
+                    <td><!-- ВСТАВИТЬ: ежедневно / Пн, Ср, Пт --></td>
+                    <td>с 7:00 до 23:00</td>
+                    <td>Серые контейнеры у подъездов</td>
+                </tr>
+                <tr>
+                    <td>Раздельный сбор: пластик / ПЭТ</td>
+                    <td><!-- ВСТАВИТЬ --></td>
+                    <td>—</td>
+                    <td>Жёлтый контейнер</td>
+                </tr>
+                <tr>
+                    <td>Раздельный сбор: стекло</td>
+                    <td><!-- ВСТАВИТЬ --></td>
+                    <td>—</td>
+                    <td>Зелёный контейнер</td>
+                </tr>
+                <tr>
+                    <td>Раздельный сбор: бумага</td>
+                    <td><!-- ВСТАВИТЬ --></td>
+                    <td>—</td>
+                    <td>Синий контейнер</td>
+                </tr>
+                <tr>
+                    <td>Крупногабаритный мусор (КГМ)</td>
+                    <td><!-- ВСТАВИТЬ: по заявке / спец. дни --></td>
+                    <td>—</td>
+                    <td>Отдельная площадка</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 style="color:#2c5282; margin:25px 0 10px;">💰 Тарифы (решение собрания 2026)</h3>
+        <div class="card">
+            <p><strong>Тариф на вывоз ТКО:</strong> <!-- ВСТАВИТЬ: например, 95,40 ₽ с человека в месяц --></p>
+            <p><strong>Норматив накопления:</strong> <!-- ВСТАВИТЬ: например, 0,098 м³/чел --></p>
+            <p><strong>Способ начисления:</strong> <!-- ВСТАВИТЬ: по кол-ву проживающих / по кв.м --></p>
+            <p><strong>Льготы:</strong> <!-- ВСТАВИТЬ: для многодетных, пенсионеров и т.д. --></p>
+        </div>
+
+        <h3 style="color:#2c5282; margin:25px 0 10px;">♻️ Правила раздельного сбора</h3>
+        <ul style="margin-left:20px;">
+            <li>Пластик, стекло, бумагу — ополаскивать от остатков еды перед выбросом.</li>
+            <li>Крышки с бутылок — снимать и выбрасывать отдельно (или в общий пластик, если нет приёма).</li>
+            <li>Батарейки, лампы, градусники — <strong>НЕ выбрасывать в общий мусор!</strong> 
+                Сдавать в специальные боксы (адреса: <!-- ВСТАВИТЬ -->).</li>
+            <li>Строительный мусор от ремонта — вывозится <strong>отдельно</strong> за счёт собственника. 
+                Звонить: <!-- ВСТАВИТЬ ТЕЛЕФОН -->.</li>
+        </ul>
+
+        <div class="warning">
+            ⚠️ <strong>Запрещено выбрасывать:</strong>
+            <ul style="margin-left:20px; margin-top:8px;">
+                <li>Ртутные лампы и градусники</li>
+                <li>Батарейки и аккумуляторы</li>
+                <li>Медицинские отходы (шприцы, лекарства)</li>
+                <li>Шины, автомобильные аккумуляторы</li>
+                <li>Биологические отходы</li>
+            </ul>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <p>© 2026 Совет дома по адресу: проезд Яраткан, 5А</p>
+    <p style="margin-top:8px;">Сайт создан силами собственников. По вопросам дополнения информации — 
+        <!-- ВСТАВИТЬ: контакт администратора / чат дома -->
+    </p>
+</footer>
+
 </body>
 </html>
