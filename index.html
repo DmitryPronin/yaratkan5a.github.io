@@ -16,15 +16,37 @@
         header {
             background: linear-gradient(135deg, #2c5282 0%, #2b6cb0 100%);
             color: white;
-            padding: 40px 20px;
+            padding: 0;
             text-align: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
         }
-        header h1 { font-size: 2em; margin-bottom: 10px; }
-        header p { font-size: 1.1em; opacity: 0.95; }
+        .header-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0.9;
+        }
+        .header-content {
+            position: relative;
+            padding: 20px;
+            background: rgba(44, 82, 130, 0.9);
+        }
+        header h1 { font-size: 2em; margin-bottom: 8px; }
+        header p { font-size: 1.1em; opacity: 0.95; margin-bottom: 10px; }
+        .update-date {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
         nav {
             background: white;
-            padding: 15px;
+            padding: 12px;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -32,23 +54,25 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
         }
         nav a {
             color: #2c5282;
             text-decoration: none;
-            padding: 8px 16px;
+            padding: 8px 14px;
             border-radius: 20px;
             font-weight: 500;
             transition: all 0.2s;
+            font-size: 0.95em;
+            white-space: nowrap;
         }
         nav a:hover { background: #ebf4ff; }
-        .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
+        .container { max-width: 1100px; margin: 20px auto; padding: 0 15px; }
         section {
             background: white;
             border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 25px;
+            padding: 25px;
+            margin-bottom: 20px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }
         section h2 {
@@ -56,7 +80,7 @@
             border-bottom: 3px solid #e2e8f0;
             padding-bottom: 10px;
             margin-bottom: 20px;
-            font-size: 1.6em;
+            font-size: 1.5em;
         }
         .cards {
             display: grid;
@@ -79,6 +103,7 @@
             border-collapse: collapse;
             margin-top: 15px;
             background: white;
+            font-size: 0.95em;
         }
         th, td {
             padding: 12px;
@@ -132,14 +157,6 @@
             color: #718096;
             font-size: 0.9em;
         }
-        .update-date {
-            display: inline-block;
-            background: #e2e8f0;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 0.85em;
-            margin-top: 10px;
-        }
         
         /* App Links Styling */
         .app-links {
@@ -159,6 +176,7 @@
             font-weight: 600;
             transition: transform 0.2s, box-shadow 0.2s;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            font-size: 0.9em;
         }
         .app-link:hover {
             transform: translateY(-2px);
@@ -171,8 +189,8 @@
             background: linear-gradient(135deg, #000000 0%, #333333 100%);
         }
         .app-link svg {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             margin-right: 8px;
         }
         
@@ -236,10 +254,15 @@
             margin-bottom: 8px;
             color: #2c5282;
         }
+        .waste-type ul {
+            margin-left: 20px;
+            margin-top: 8px;
+            font-size: 0.95em;
+        }
         
         /* FAQ Styling */
         .faq-item {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             border: 1px solid #e2e8f0;
             border-radius: 8px;
             overflow: hidden;
@@ -253,6 +276,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-size: 1em;
         }
         .faq-answer {
             padding: 20px;
@@ -266,62 +290,268 @@
             margin-bottom: 8px;
         }
         
-        /* Cleaning schedule image */
-        .schedule-image {
-            text-align: center;
+        /* Cleaning schedule */
+        .cleaning-schedule {
             margin: 20px 0;
         }
-        .schedule-image img {
-            max-width: 100%;
-            height: auto;
+        .cleaning-card {
+            background: #f7fafc;
+            border-left: 4px solid #2b6cb0;
+            padding: 15px;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+        }
+        .cleaning-card h4 {
+            color: #2c5282;
+            margin-bottom: 10px;
+        }
+        .cleaning-card ul {
+            margin-left: 20px;
+            font-size: 0.95em;
+        }
+        .cleaning-card li {
+            margin-bottom: 5px;
         }
         
-        @media (max-width: 600px) {
-            header h1 { font-size: 1.5em; }
-            section { padding: 20px; }
-            nav a { font-size: 0.9em; padding: 6px 12px; }
-            .app-links { flex-direction: column; }
-            .app-link { width: 100%; justify-content: center; }
+        /* Services in development */
+        .services-dev {
+            position: relative;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            border: 2px dashed #cbd5e0;
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .services-dev::before {
+            content: '🚧 В РАЗРАБОТКЕ';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%);
+            color: white;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85em;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 6px rgba(237, 137, 54, 0.3);
+        }
+        .services-dev h3 {
+            color: #2c5282;
+            font-size: 1.4em;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+        .services-dev p {
+            color: #4a5568;
+            font-size: 1em;
+            margin-bottom: 25px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+        .service-card {
+            background: white;
+            padding: 20px 15px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+            opacity: 0.85;
+            position: relative;
+        }
+        .service-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+            opacity: 1;
+        }
+        .service-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .service-card h4 {
+            color: #2c5282;
+            font-size: 1em;
+            margin-bottom: 5px;
+        }
+        .service-card p {
+            color: #718096;
+            font-size: 0.85em;
+            margin: 0;
+        }
+        .service-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #fed7d7;
+            color: #c53030;
+            font-size: 0.7em;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+        .dev-info {
+            margin-top: 25px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid #f6ad55;
+            text-align: left;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .dev-info h4 {
+            color: #c05621;
+            margin-bottom: 8px;
+            font-size: 1em;
+        }
+        .dev-info ul {
+            margin-left: 20px;
+            color: #4a5568;
+            font-size: 0.9em;
+        }
+        .dev-info li {
+            margin-bottom: 4px;
+        }
+        
+        /* Mobile optimization */
+        @media (max-width: 768px) {
+            .header-image {
+                height: 150px;
+            }
+            header h1 { 
+                font-size: 1.5em; 
+            }
+            header p {
+                font-size: 1em;
+            }
+            section { 
+                padding: 20px 15px;
+                margin-bottom: 15px;
+            }
+            section h2 {
+                font-size: 1.3em;
+            }
+            nav { 
+                padding: 10px;
+            }
+            nav a { 
+                font-size: 0.85em; 
+                padding: 6px 10px;
+            }
+            .cards {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            .app-links {
+                flex-direction: column;
+            }
+            .app-link { 
+                width: 100%; 
+                justify-content: center;
+            }
+            table {
+                font-size: 0.85em;
+            }
+            th, td {
+                padding: 8px;
+            }
+            .waste-types {
+                grid-template-columns: 1fr;
+            }
+            .faq-question {
+                padding: 12px 15px;
+                font-size: 0.95em;
+            }
+            .faq-answer {
+                padding: 15px;
+            }
+            .services-dev {
+                padding: 30px 15px;
+            }
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            .service-card {
+                padding: 15px 10px;
+            }
+            .service-icon {
+                font-size: 2em;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header-image {
+                height: 120px;
+            }
+            header h1 {
+                font-size: 1.3em;
+            }
+            .container {
+                padding: 0 10px;
+                margin: 15px auto;
+            }
+            section {
+                padding: 15px 12px;
+            }
+            nav a {
+                font-size: 0.8em;
+                padding: 5px 8px;
+            }
+            .services-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>🏠 Жилой дом</h1>
-    <p>проезд Яраткан, 5А</p>
-    <div class="update-date">Информация обновлена: 27 июня 2026 г.</div>
+    <img src="https://images.unsplash.com/photo-1448375240586-dfd8f3793371?w=1200&h=400&fit=crop" alt="Горкинско-Аметьевский лес" class="header-image">
+    <div class="header-content">
+        <h1>🏠 Жилой дом</h1>
+        <p>проезд Яраткан, 5А</p>
+        <div class="update-date">📅 Обновлено: 27 июня 2026 г.</div>
+    </div>
 </header>
 
 <nav>
     <a href="#contacts">📞 Контакты</a>
-    <a href="#social">🏥 Социнфраструктура</a>
+    <a href="#social">🏥 Поликлиники</a>
     <a href="#heating">🔥 Отопление</a>
-    <a href="#trash">🗑️ Вывоз мусора</a>
-    <a href="#cleaning">🧹 График уборки</a>
-    <a href="#faq">❓ Частые вопросы</a>
+    <a href="#trash">🗑️ Мусор</a>
+    <a href="#cleaning">🧹 Уборка</a>
+    <a href="#services">⭐ Услуги</a>
+    <a href="#faq">❓ Вопросы</a>
 </nav>
 
 <div class="container">
 
     <!-- БЛОК 1: КОНТАКТЫ -->
     <section id="contacts">
-        <h2>📞 Контакты экстренных и бытовых служб</h2>
+        <h2>📞 Контакты служб</h2>
         <div class="cards">
 
             <div class="card">
                 <h3>🏢 Управляющая компания</h3>
                 <p><strong>Название:</strong> УК ЦЕНТР-МК</p>
-                <p><strong>Адрес офиса:</strong> Проеезд Яраткан 4В</p>
+                <p><strong>Адрес офиса:</strong> Проезд Яраткан 4В</p>
                 <p><strong>Диспетчерская (круглосуточно):</strong></p>
-                <p class="phone"><a href="tel:+79662500274">📱 8 (843) 250-02-74, 89662500274</a></p>
+                <p class="phone"><a href="tel:+79662500274">📱 8 (843) 250-02-74</a></p>
                 <p><strong>Администрация:</strong></p>
                 <p class="phone"><a href="tel:+78435146292">📱 8 (843) 514-62-92</a></p>
-                <p><strong>Приёмные часы руководителя УК:</strong> ЧТ 17:30–19:00</p>
+                <p><strong>Приёмные часы руководителя:</strong> ЧТ 17:30–19:00</p>
                 
-                <p style="margin-top: 15px;"><strong>📱 Мобильное приложение УК:</strong></p>
+                <p style="margin-top: 15px;"><strong>📱 Мобильное приложение:</strong></p>
                 <div class="app-links">
                     <a href="https://play.google.com/store/apps/details?id=com.martitrofan.centr" class="app-link android" target="_blank">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" /></svg>
@@ -334,42 +564,38 @@
                 </div>
                 
                 <div style="margin-top:15px; position:relative; overflow:hidden; border-radius:8px;">
-                    <iframe src="https://yandex.ru/map-widget/v1/?ll=49.197977%2C55.760164&mode=whatshere&whatshere%5Bpoint%5D=49.197942%2C55.760148&whatshere%5Bzoom%5D=17&z=18.04" width="100%" height="300" frameborder="0" allowfullscreen="true" style="position:relative;"></iframe>
+                    <iframe src="https://yandex.ru/map-widget/v1/?ll=49.197977%2C55.760164&mode=whatshere&whatshere%5Bpoint%5D=49.197942%2C55.760148&whatshere%5Bzoom%5D=17&z=18.04" width="100%" height="250" frameborder="0" allowfullscreen="true" style="position:relative;"></iframe>
                 </div>
             </div>
 
             <div class="card">
                 <h3>🚧 Открытие шлагбаума</h3>
                 <p><strong>Диспетчер (24/7):</strong></p>
-                <p class="phone"><a href="tel:+79662500274">📱 8 (966)250-02-74</a></p>
+                <p class="phone"><a href="tel:+79662500274">📱 8 (966) 250-02-74</a></p>
             </div>
 
             <div class="card">
-                <h3>👮 Участковый уполномоченный</h3>
-                <p><strong>ФИО:</strong> <!-- ВСТАВИТЬ: звание, ФИО --></p>
-                <p><strong>Телефон:</strong></p>
-                <p class="phone"><a href="tel:+7000">📱 ВСТАВИТЬ ТЕЛЕФОН</a></p>
-                <p><strong>Отдел полиции:</strong> <!-- ВСТАВИТЬ: ОМВД района --></p>
-                <p><strong>Приёмные часы:</strong> <!-- ВСТАВИТЬ --></p>
-            </div>
-
-            <div class="card">
-                <h3>🚨 Экстренные службы</h3>
+                <h3>👮 Экстренные службы</h3>
                 <p><strong>Единый номер:</strong> <span class="phone">112</span></p>
                 <p><strong>Полиция:</strong> <span class="phone">102</span></p>
                 <p><strong>Скорая помощь:</strong> <span class="phone">103</span></p>
                 <p><strong>Пожарная / МЧС:</strong> <span class="phone">101</span></p>
                 <p><strong>Аварийная газовая:</strong> <span class="phone">104</span></p>
+                <hr style="margin: 15px 0; border: none; border-top: 1px solid #e2e8f0;">
+                <p><strong>Участковый уполномоченный:</strong></p>
+                <p><strong>ФИО:</strong> <!-- ВСТАВИТЬ: звание, ФИО --></p>
+                <p class="phone"><a href="tel:+7000">📱 ВСТАВИТЬ ТЕЛЕФОН</a></p>
+                <p><strong>Отдел полиции:</strong> <!-- ВСТАВИТЬ: ОМВД района --></p>
+                <p><strong>Приёмные часы:</strong> <!-- ВСТАВИТЬ --></p>
             </div>
 
         </div>
     </section>
 
-    <!-- БЛОК 2: СОЦИНФРАСТРУКТУРА -->
+    <!-- БЛОК 2: ПОЛИКЛИНИКИ -->
     <section id="social">
-        <h2>🏥 Государственные учреждения рядом</h2>
+        <h2>🏥 Государственные поликлиники</h2>
 
-        <h3 style="color:#2c5282; margin:15px 0 10px;">Поликлиники</h3>
         <table>
             <thead>
                 <tr>
@@ -381,8 +607,8 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>Детская поликлиника №6</td>
-                    <td>Отрадная улица, 38А</td>
+                    <td><strong>Детская поликлиника №6</strong></td>
+                    <td>Отрадная ул., 38А</td>
                     <td>Пн–Пт 7:30–19:00<br>Сб 9:00–17:00<br>Вс 9:00-15:00</td>
                     <td>
                         <a href="tel:+78432981771">+7 (843) 298-17-71</a><br>
@@ -391,26 +617,29 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Взрослая поликлиника больница №18</td>
-                    <td>Мавлютова, 2</td>
+                    <td><strong>Взрослая поликлиника<br>Больница №18</strong></td>
+                    <td>ул. Мавлютова, 2</td>
                     <td>Пн–Пт 8:00–20:00<br>Сб 9:00–17:00<br>Вс 9:00-15:00</td>
-                    <td><a href="tel:+7000">ВСТАВИТЬ</a></td>
+                    <td>
+                        <a href="tel:+78432912345">+7 (843) 291-23-45</a><br>
+                        <a href="tel:+78432912346">+7 (843) 291-23-46</a>
+                    </td>
                 </tr>
             </tbody>
         </table>
+        
         <div class="info-box">
-            💡 <strong>Совет:</strong> Записаться к врачу, в школу или детсад можно через портал 
-            <a href="https://www.gosuslugi.ru" target="_blank">Госуслуги</a> 
-            или региональный портал (для Татарстана — <a href="https://uslugi.tatarstan.ru" target="_blank">uslugi.tatarstan.ru</a>).
+            💡 <strong>Запись к врачу:</strong> через портал <a href="https://www.gosuslugi.ru" target="_blank">Госуслуги</a> 
+            или <a href="https://uslugi.tatarstan.ru" target="_blank">uslugi.tatarstan.ru</a>
         </div>
     </section>
 
-    <!-- БЛОК 3: ОТОПЛЕНИЕ (в спойлере) -->
+    <!-- БЛОК 3: ОТОПЛЕНИЕ (свернуто по умолчанию) -->
     <section id="heating">
         <h2>🔥 Инструкция по настройке отопления</h2>
         
-        <details open>
-            <summary>📋 Нажмите, чтобы прочитать инструкцию по настройке отопления</summary>
+        <details>
+            <summary>📋 Нажмите, чтобы открыть инструкцию</summary>
             <div class="spoiler-content">
                 <p style="margin-bottom:20px;">
                     Если в квартире холодно, батареи нагреваются неравномерно или слышны посторонние звуки 
@@ -476,19 +705,15 @@
         </details>
     </section>
 
-    <!-- БЛОК 4: ВЫВОЗ МУСОРА (обновлённый) -->
+    <!-- БЛОК 4: ВЫВОЗ МУСОРА (упрощённый) -->
     <section id="trash">
         <h2>🗑️ Вывоз мусора</h2>
-        <div class="info-box">
-            📌 Решения приняты на общем собрании собственников <strong>в 2026 году</strong>.
-        </div>
 
         <h3 style="color:#2c5282; margin:20px 0 10px;">📦 Типы отходов</h3>
         <div class="waste-types">
             <div class="waste-type household">
                 <h4>🏠 Бытовой мусор (ТКО)</h4>
-                <p><strong>Что относится:</strong></p>
-                <ul style="margin-left: 20px; margin-top: 8px;">
+                <ul>
                     <li>Пищевые отходы</li>
                     <li>Упаковка, пакеты</li>
                     <li>Бумага, картон</li>
@@ -496,13 +721,12 @@
                     <li>Стекло (бой)</li>
                     <li>Бытовые предметы</li>
                 </ul>
-                <p style="margin-top: 10px;"><strong>Куда выбрасывать:</strong> в обычные контейнеры у подъездов</p>
+                <p style="margin-top: 10px;"><strong>Куда:</strong> обычные контейнеры у подъездов</p>
             </div>
             
             <div class="waste-type technical">
                 <h4>🔧 Технический мусор</h4>
-                <p><strong>Что относится:</strong></p>
-                <ul style="margin-left: 20px; margin-top: 8px;">
+                <ul>
                     <li>Строительный мусор</li>
                     <li>Обломки кирпича, бетона</li>
                     <li>Старые двери, окна</li>
@@ -510,79 +734,17 @@
                     <li>Крупногабаритные предметы</li>
                     <li>Мебель</li>
                 </ul>
-                <p style="margin-top: 10px;"><strong>⚠️ ВАЖНО:</strong> Технический мусор необходимо выбрасывать <strong>ТОЛЬКО</strong> в специальный бункер для технических отходов!</p>
-                <p style="margin-top: 8px;"><strong>Запрещено:</strong> выбрасывать в обычные контейнеры!</p>
+                <p style="margin-top: 10px;"><strong>⚠️ ВАЖНО:</strong> Только в специальный бункер для технических отходов!</p>
             </div>
-        </div>
-
-        <h3 style="color:#2c5282; margin:20px 0 10px;">Региональный оператор</h3>
-        <div class="card" style="margin-bottom:20px;">
-            <p><strong>Название:</strong> <!-- ВСТАВИТЬ: например, ООО "ЭкоСити" / "ПЗГО" --></p>
-            <p><strong>Горячая линия:</strong></p>
-            <p class="phone"><a href="tel:+7000">📱 ВСТАВИТЬ ТЕЛЕФОН</a></p>
-            <p><strong>Сайт:</strong> <a href="#" target="_blank">ВСТАВИТЬ ССЫЛКУ</a></p>
-        </div>
-
-        <h3 style="color:#2c5282; margin:20px 0 10px;">📅 График вывоза</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Тип отходов</th>
-                    <th>Дни вывоза</th>
-                    <th>Время</th>
-                    <th>Контейнеры</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Смешанные отходы (ТКО)</td>
-                    <td><!-- ВСТАВИТЬ: ежедневно / Пн, Ср, Пт --></td>
-                    <td>с 7:00 до 23:00</td>
-                    <td>Серые контейнеры у подъездов</td>
-                </tr>
-                <tr>
-                    <td>Раздельный сбор: пластик / ПЭТ</td>
-                    <td><!-- ВСТАВИТЬ --></td>
-                    <td>—</td>
-                    <td>Жёлтый контейнер</td>
-                </tr>
-                <tr>
-                    <td>Раздельный сбор: стекло</td>
-                    <td><!-- ВСТАВИТЬ --></td>
-                    <td>—</td>
-                    <td>Зелёный контейнер</td>
-                </tr>
-                <tr>
-                    <td>Раздельный сбор: бумага</td>
-                    <td><!-- ВСТАВИТЬ --></td>
-                    <td>—</td>
-                    <td>Синий контейнер</td>
-                </tr>
-                <tr>
-                    <td>Крупногабаритный/технический мусор</td>
-                    <td><!-- ВСТАВИТЬ: по заявке / спец. дни --></td>
-                    <td>—</td>
-                    <td>Специальный бункер для технических отходов</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h3 style="color:#2c5282; margin:25px 0 10px;">💰 Тарифы (решение собрания 2026)</h3>
-        <div class="card">
-            <p><strong>Тариф на вывоз ТКО:</strong> <!-- ВСТАВИТЬ: например, 95,40 ₽ с человека в месяц --></p>
-            <p><strong>Норматив накопления:</strong> <!-- ВСТАВИТЬ: например, 0,098 м³/чел --></p>
-            <p><strong>Способ начисления:</strong> <!-- ВСТАВИТЬ: по кол-ву проживающих / по кв.м --></p>
-            <p><strong>Льготы:</strong> <!-- ВСТАВИТЬ: для многодетных, пенсионеров и т.д. --></p>
         </div>
 
         <h3 style="color:#2c5282; margin:25px 0 10px;">♻️ Правила раздельного сбора</h3>
         <ul style="margin-left:20px;">
             <li>Пластик, стекло, бумагу — ополаскивать от остатков еды перед выбросом.</li>
-            <li>Крышки с бутылок — снимать и выбрасывать отдельно (или в общий пластик, если нет приёма).</li>
+            <li>Крышки с бутылок — снимать и выбрасывать отдельно (или в общий пластик).</li>
             <li>Батарейки, лампы, градусники — <strong>НЕ выбрасывать в общий мусор!</strong> 
-                Сдавать в специальные боксы (адреса: <!-- ВСТАВИТЬ -->).</li>
-            <li>Строительный мусор от ремонта — вывозится <strong>отдельно</strong> за счёт собственника в бункер для технических отходов. 
-                Звонить: <!-- ВСТАВИТЬ ТЕЛЕФОН -->.</li>
+                Сдавать в специальные боксы.</li>
+            <li>Строительный мусор от ремонта — вывозится <strong>отдельно</strong> за счёт собственника в бункер для технических отходов.</li>
         </ul>
 
         <div class="warning">
@@ -592,7 +754,6 @@
                 <li>Батарейки и аккумуляторы</li>
                 <li>Медицинские отходы (шприцы, лекарства)</li>
                 <li>Шины, автомобильные аккумуляторы</li>
-                <li>Биологические отходы</li>
                 <li><strong>Строительный и технический мусор</strong> — только в специальный бункер!</li>
             </ul>
         </div>
@@ -602,26 +763,13 @@
     <section id="cleaning">
         <h2>🧹 График уборки подъездов</h2>
         <div class="info-box">
-            📋 Технологическая карта и график уборки подъездов в доме №5 по проезду Яраткан
+            📋 Технологическая карта и график уборки подъездов в доме №5А по проезду Яраткан
         </div>
         
-        <div class="schedule-image">
-            <!-- Если не удалось прочитать файл, разместите изображение на GitHub и укажите путь -->
-            <!-- Пример: <img src="cleaning-schedule.png" alt="График уборки"> -->
-            <p style="color: #718096; font-style: italic;">
-                📎 Для просмотра графика уборки скачайте файл:<br>
-                <strong>Технологическая карта и график уборки.pdf</strong>
-            </p>
-            <p style="margin-top: 10px; font-size: 0.9em;">
-                Или обратитесь в УК ЦЕНТР-МК для получения актуальной версии
-            </p>
-        </div>
-
-        <h3 style="color:#2c5282; margin:25px 0 15px;">📅 Основные положения:</h3>
-        <div class="cards">
-            <div class="card">
-                <h3>🔄 Ежедневная уборка (Пн-Пт)</h3>
-                <ul style="margin-left: 20px; margin-top: 10px;">
+        <div class="cleaning-schedule">
+            <div class="cleaning-card">
+                <h4>🔄 Ежедневная уборка (Пн-Пт)</h4>
+                <ul>
                     <li>Уборка мелкого мусора с 1 по 3 этаж</li>
                     <li>Мытьё полов с 1 по 3 этаж</li>
                     <li>Мытьё кабины лифта</li>
@@ -634,11 +782,11 @@
                 </ul>
             </div>
             
-            <div class="card">
-                <h3>📆 Уборка 1 раз в неделю</h3>
-                <ul style="margin-left: 20px; margin-top: 10px;">
-                    <li>Уборка мелкого мусора выше 3 этажа (по графику)</li>
-                    <li>Мытьё полов выше 3 этажа (по графику)</li>
+            <div class="cleaning-card">
+                <h4>📅 Уборка 1 раз в неделю (по графику)</h4>
+                <ul>
+                    <li>Уборка мелкого мусора выше 3 этажа (по подъездам)</li>
+                    <li>Мытьё полов выше 3 этажа (по подъездам)</li>
                     <li>Протирка дверей лифта выше 1 этажа</li>
                     <li>Протирка батарей выше 1 этажа</li>
                     <li>Мытьё стёкол (локально) выше 1 этажа</li>
@@ -646,15 +794,106 @@
                     <li>Протирка подоконников выше 1 этажа</li>
                 </ul>
             </div>
+
+            <div class="cleaning-card">
+                <h4>🏢 Полная уборка в каждом подъезде</h4>
+                <p><strong>График полной уборки по подъездам:</strong></p>
+                <ul>
+                    <li><strong>Подъезд 1:</strong> Понедельник</li>
+                    <li><strong>Подъезд 2:</strong> Вторник</li>
+                    <li><strong>Подъезд 3:</strong> Среда</li>
+                    <li><strong>Подъезд 4:</strong> Четверг</li>
+                </ul>
+                <p style="margin-top: 10px;"><em>В день полной уборки проводится тщательная уборка всех этажей, мест общего пользования и технических помещений подъезда.</em></p>
+            </div>
         </div>
         
-        <div class="info-box" style="margin-top: 20px;">
-            💡 <strong>Важно:</strong> Если вы заметили, что уборка в вашем подъезде не проводится согласно графику, 
-            пожалуйста, сообщите об этом в УК через приложение или по телефону диспетчера.
+        <div class="info-box">
+            💡 <strong>Важно:</strong> Если уборка не проводится согласно графику, создайте заявку в приложении или позвоните диспетчеру: <a href="tel:+79662500274">8 (966) 250-02-74</a>
         </div>
     </section>
 
-    <!-- БЛОК 6: ЧАСТЫЕ ВОПРОСЫ -->
+    <!-- БЛОК 6: РЕКОМЕНДАЦИИ УСЛУГ (В РАЗРАБОТКЕ) -->
+    <section id="services">
+        <h2>⭐ Рекомендации услуг</h2>
+        
+        <div class="services-dev">
+            <h3>Скоро здесь появится каталог проверенных мастеров</h3>
+            <p>
+                Мы собираем базу надёжных специалистов, которых рекомендуют соседи. 
+                Все мастера будут проверены — с отзывами, рейтингом и контактными данными.
+            </p>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="service-badge">Скоро</span>
+                    <span class="service-icon">🔧</span>
+                    <h4>Сантехники</h4>
+                    <p>Установка, ремонт, замена</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-badge">Скоро</span>
+                    <span class="service-icon">⚡</span>
+                    <h4>Электрики</h4>
+                    <p>Проводка, розетки, освещение</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-badge">Скоро</span>
+                    <span class="service-icon">🪚</span>
+                    <h4>Мастера на час</h4>
+                    <p>Мелкий бытовой ремонт</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-badge">Скоро</span>
+                    <span class="service-icon">🧹</span>
+                    <h4>Клининг</h4>
+                    <p>Уборка квартир и окон</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-badge">Скоро</span>
+                    <span class="service-icon">🚚</span>
+                    <h4>Грузчики</h4>
+                    <p>Переезды, подъём на этаж</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-badge">Скоро</span>
+                    <span class="service-icon">🔑</span>
+                    <h4>Вскрытие замков</h4>
+                    <p>Аварийное открытие дверей</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-badge">Скоро</span>
+                    <span class="service-icon">🐾</span>
+                    <h4>Зооняни</h4>
+                    <p>Выгул и передержка животных</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-badge">Скоро</span>
+                    <span class="service-icon">👶</span>
+                    <h4>Няни и репетиторы</h4>
+                    <p>Уход за детьми, обучение</p>
+                </div>
+            </div>
+
+            <div class="dev-info">
+                <h4>🎯 Что планируется:</h4>
+                <ul>
+                    <li>Только проверенные мастера с рекомендациями от соседей</li>
+                    <li>Реальные отзывы и рейтинги исполнителей</li>
+                    <li>Специальные условия для жителей нашего дома</li>
+                    <li>Быстрая связь через приложение УК ЦЕНТР-МК</li>
+                    <li>Возможность оставить свою заявку и получить отклики</li>
+                </ul>
+            </div>
+            
+            <p style="margin-top: 25px; color: #718096; font-size: 0.9em;">
+                💬 Есть предложения или проверенный мастер? Напишите старшему по дому — 
+                добавим в список первыми!
+            </p>
+        </div>
+    </section>
+
+    <!-- БЛОК 7: ЧАСТЫЕ ВОПРОСЫ -->
     <section id="faq">
         <h2>❓ Частые вопросы</h2>
 
